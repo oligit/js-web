@@ -3,4 +3,4 @@ window.onload = function (){
 		alert('Hola!');
 	};
 	document.getElementById('btn').addEventListener('click', btnAlert, false);
-};
+}
