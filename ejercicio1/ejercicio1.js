@@ -3,4 +3,5 @@ window.onload = function (){
 		alert('Hola!');
 	};
 	document.getElementById('btn').addEventListener('click', btnAlert, false);
-}
+	console.log(navigator.appVersion);
+};

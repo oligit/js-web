@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="keywords" content="web, learning, html5, css3">
+    <meta name="author" content="Oscar">
+    <meta name="application-name" content="�">
+    <meta name="description" content="JS">
+    <meta name="generator" content="Bluefish 2.2.4">
+    <meta charset="UTF-8">
+   
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="Azureus-icon.png">
+
+    <title></title>
+    <script>
+        
+       
+        function main() {
+
+            var conta1 = new Conta();
+            document.getElementById("boton1").onclick = conta1.mostrar.bind(conta1);
+            document.getElementById("boton2").onclick = conta1.reiniciar.bind(conta1);
+            document.getElementById("boton3").onclick = conta1.iniciar.bind(conta1);
+            document.getElementById("boton4").onclick = conta1.vaciar.bind(conta1);
+
+            
+
+        };
+        function Conta() {
+            this.conCokiie = this.getCookie();
+
+            if (this.conCokiie) {
+               this.setCookie(++this.conCokiie, 100);
+            } else {
+                this.setCookie( 1, 30);
+            }
+
+        }
+        Conta.prototype.vaciar = function () { this.setCookie(0, -1) }
+
+         Conta.prototype.reiniciar = function () {
+
+            location.reload(true);
+
+        }
+
+         Conta.prototype.mostrar  = function () {
+             this.conCokiie = this.getCookie();
+             document.getElementById("contenedor").textContent = this.conCokiie;
+
+         }
+
+         Conta.prototype.iniciar = function () {
+             
+             this.setCookie(1, 100);
+         }
+
+
+         Conta.prototype.setCookie = function (value, exDays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exDays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = "visitas" + "=" + value + "; " + expires;
+
+        }
+
+        Conta.prototype.getCookie = function() {
+            var name = "visitas=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) != -1) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+       
+                window.onload = main;
+
+    </script>
+    <style>
+        nav {
+            border: 2px solid black;
+            width: 30%;
+            margin: auto;
+            text-align: center;
+            padding: 8%;
+            background-color: grey;
+        }
+        nav p {
+            background-color:white;
+        }
+       
+/*formato de pie de pagina*/
+        footer div {
+            margin-top: 3em;
+            border-top: 2px solid silver;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div>
+            <p id="contenedor">""</p>
+            <input type="button" value="mostrar" id="boton1">
+            <input type="button" value="reiniciar" id="boton2">
+            <input type="button" value="iniciar" id="boton3">
+            <input type="button" value="vaciar" id="boton4">           
+        </div>       
+
+    </nav>
+
+
+
+
+<!-- Pie de pagina combinando boorstrap y css-->
+    <footer class="container.fluid">
+        <div class="col-md-8 col-md-offset-2">
+            <address class="text-center">&copy; Oscar Palanco <a href="mailto:opalanco@gmail.com">opalanco@gmail.com</a></address>
+        </div>
+        </footer>
+
+</body>
+</html>

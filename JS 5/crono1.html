@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="keywords" content="web, learning, html5, css3">
+    <meta name="author" content="Oscar">
+    <meta name="application-name" content="�">
+    <meta name="description" content="JS">
+    <meta name="generator" content="Bluefish 2.2.4">
+    <meta charset="UTF-8">
+   
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="Azureus-icon.png">
+
+    <title></title>
+    <script>
+        
+        window.onload = main;
+
+        function main() {
+            var time;
+            var con = 0;
+
+            document.getElementById("boton").onclick = empezar;
+            document.getElementById("boton2").onclick = iniciar;
+
+            function empezar() {
+
+                if (!time) {
+                    arrancar();
+
+                } else {
+                    parar();
+                }
+            }
+
+            function arrancar() {
+                time = setInterval(mostrar, 1000);
+            }
+
+            function parar() {
+                clearInterval(time);
+                time = null;
+            }
+            function mostrar() {
+                con += 1;
+                document.getElementById("contenedor").textContent = con;
+            }
+        }
+
+    </script>
+    <style>
+        nav {
+            border: 2px solid black;
+            width: 30%;
+            margin: auto;
+            text-align: center;
+            padding: 8%;
+            background-color: grey;
+        }
+        nav p {
+            background-color:white;
+        }
+       
+/*formato de pie de pagina*/
+        footer div {
+            margin-top: 3em;
+            border-top: 2px solid silver;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div>
+            <p id="contenedor">0</p>
+            <input type="button" value="Empezar/parar" id="boton">
+            <input type="button" value="Iniciar" id="boton2">
+                       
+        </div>       
+
+    </nav>
+
+
+
+
+<!-- Pie de pagina combinando boorstrap y css-->
+    <footer class="container.fluid">
+        <div class="col-md-8 col-md-offset-2">
+            <address class="text-center">&copy; Oscar Palanco <a href="mailto:opalanco@gmail.com">opalanco@gmail.com</a></address>
+        </div>
+        </footer>
+
+</body>
+</html>

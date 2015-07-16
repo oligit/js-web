@@ -1,0 +1,159 @@
+﻿
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="keywords" content="web, learning, html5, css3">
+    <meta name="author" content="Oscar">
+    <meta name="application-name" content="�">
+    <meta name="description" content="JS">
+    <meta name="generator" content="Bluefish 2.2.4">
+    <meta charset="UTF-8">
+   
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="Azureus-icon.png">
+
+    <title></title>
+    <script>
+        
+       
+        function main() { //Asociaciones a manejadores de eventos
+
+            var c1 = new Cookie("contador1");
+            var c2 = new Cookie("contador2");
+
+            console.log(c1)
+            document.getElementById("iniciar").onclick = c1.iniciar.bind(c1);
+            document.getElementById("vaciar").onclick = c1.vaciar.bind(c1);
+            document.getElementById("mostrar").onclick = c1.mostrar.bind(c1);
+            document.getElementById("recargar").onclick = c1.recargar.bind(c1);
+
+            document.getElementById("iniciar1").onclick = c2.iniciar.bind(c2);
+            document.getElementById("vaciar1").onclick = c2.vaciar.bind(c2);
+            document.getElementById("mostrar1").onclick = c2.mostrar.bind(c2);
+            document.getElementById("recargar1").onclick = c2.recargar.bind(c2);
+
+
+        } // Fin main
+
+        function Cookie(nombre) {
+            this.nombre = nombre;
+            this.contador = this.getCookie(this.nombre);
+            if (this.contador) {
+                this.setCookie(this.nombre, ++this.contador, 30);
+            }
+            else {
+                this.setCookie(this.nombre, 1, 30);
+            }
+
+        }
+        Cookie.prototype.getCookie = function (cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+            }
+            return "";
+        }
+
+        Cookie.prototype.setCookie = function (cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+        }
+
+        Cookie.prototype.iniciar = function () {
+            this.contador = 1;
+            this.setCookie(this.nombre, this.contador, 30);
+
+        }
+
+        Cookie.prototype.vaciar = function () {
+            this.contador = 0;
+            this.setCookie(this.nombre, this.contador, -1); // Valor negativo de tiempo = cookie caducada
+        }
+
+        Cookie.prototype.mostrar = function () {
+            alert("Has visitado la pÃ¡gina: " + this.getCookie(this.nombre) + " veces");
+            console.log(this.contador);
+        }
+
+        Cookie.prototype.recargar = function () {
+            location.reload();
+        }
+
+
+
+
+
+        window.onload = main;   //$(main) en JQuery
+
+    </script>
+    <style>
+        nav {
+            border: 2px solid black;
+            width: 30%;
+            margin: auto;
+            text-align: center;
+            padding: 8%;
+            background-color: grey;
+        }
+        nav p {
+            background-color:white;
+        }
+       
+/*formato de pie de pagina*/
+        footer div {
+            margin-top: 3em;
+            border-top: 2px solid silver;
+        }
+    </style>
+</head>
+<body>
+
+    <body>
+        <header>
+            <h1>Contador cookie JavaScript</h1>
+        </header>
+        <article>
+            <div id="obj1">
+                <p>Cookie 1</p>
+                <input type="button" id="iniciar" value="Iniciar">
+                <input type="button" id="vaciar" value="Vaciar">
+
+                <input type="button" id="mostrar" value="Mostrar">
+                <input type="button" id="recargar" value="Recargar">
+            </div>
+
+            <div id="obj2">
+                <p>Cookie 2</p>
+                <input type="button" id="iniciar1" value="Iniciar">
+                <input type="button" id="vaciar1" value="Vaciar">
+
+                <input type="button" id="mostrar1" value="Mostrar">
+                <input type="button" id="recargar1" value="Recargar">
+            </div>
+        </article>
+
+
+
+  
+
+<!-- Pie de pagina combinando boorstrap y css-->
+    <footer class="container.fluid">
+        <div class="col-md-8 col-md-offset-2">
+            <address class="text-center">&copy; Oscar Palanco <a href="mailto:opalanco@gmail.com">opalanco@gmail.com</a></address>
+        </div>
+        </footer>
+
+</body>
+</html>

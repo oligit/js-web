@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="keywords" content="web, learning, html5, css3">
+    <meta name="author" content="Oscar">
+    <meta name="application-name" content="�">
+    <meta name="description" content="JS">
+    <meta name="generator" content="Bluefish 2.2.4">
+    <meta charset="UTF-8">
+   
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="Azureus-icon.png">
+
+    <title></title>
+    <script>
+        
+        window.onload = main;
+
+        function main() {
+            var crono1 = new Crono("contenedor");
+            var crono2 = new Crono("contenedor1");
+
+            document.getElementById("boton").onclick = crono1.empezar.bind(crono1);
+            document.getElementById("boton2").onclick = crono1.iniciar.bind(crono1);
+            document.getElementById("boton3").onclick = crono2.empezar.bind(crono2);
+            document.getElementById("boton4").onclick = crono2.iniciar.bind(crono2);
+
+        };
+        function Crono(conten) {
+            this.time = this.
+            if (this.time) {
+                this.setCookie( ++this.time, 30);
+            }
+            else {
+                this.setCookie(this.nombre, 1, 30);
+            }
+            
+            this.conSeg = 00;
+            this.conMin = 00;
+            this.conHora = 00;
+            this.conten = conten,
+
+            Crono.prototype.setCookie = function ( cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + d.toUTCString();
+                document.cookie = "Visita" + "=" + cvalue + "; " + expires;
+            },
+            Crono.prototype.getCookie = function () {
+                var name = "Visita=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1);
+                    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+                }
+                return "";
+            },
+
+
+            Crono.prototype.empezar = function () {
+                if (!this.time) {
+                    this.arrancar();
+
+                } else {
+                    this.parar();
+                }
+            },
+            Crono.prototype.iniciar = function () {
+                this.conSeg = 0;
+               var vercrono = document.getElementById(this.conten).innerHTML = this.conSeg;
+            },
+
+            Crono.prototype.arrancar = function () {
+                this.time = setInterval(this.mostrar.bind(this), 1000);
+                this.setCookie(this.time,30)
+            },
+
+            Crono.prototype.parar = function () {
+                clearInterval(this.time);
+                this.time = null;
+            },
+            Crono.prototype.mostrar = function () {
+
+                if (this.conSeg < 59) {
+                    this.conSeg += 1;
+                } else {
+                    this.conSeg = 0;
+                    this.conMin += 1;
+                }
+                if (this.conMin > 59) {
+                    this.conMin = 0;
+                    this.conHora += 1;
+                }
+                
+
+               var vercrono = document.getElementById(this.conten).innerHTML = "" + this.conHora + ":"  + this.conMin + ":"  + this.conSeg;
+            }
+        };
+
+    </script>
+    <style>
+        nav {
+            border: 2px solid black;
+            width: 30%;
+            margin: 15px;
+            text-align: center;
+            padding: 8%;
+            background-color: grey;
+        }
+        nav p {
+            background-color:white;
+        }
+       
+/*formato de pie de pagina*/
+        footer div {
+            margin-top: 3em;
+            border-top: 2px solid silver;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div>
+            <p id="contenedor">0</p>
+            <input type="button" value="Empezar1/parar" id="boton">
+            <input type="button" value="Iniciar" id="boton2">
+            <hr/>
+            <input type="button" value="Empezar2/parar" id="boton3">
+            <input type="button" value="Iniciar" id="boton4">
+            <p id="contenedor1">0</p>          
+        </div>
+        
+               
+
+    </nav>
+
+
+
+
+<!-- Pie de pagina combinando boorstrap y css-->
+    <footer class="container.fluid">
+        <div class="col-md-8 col-md-offset-2">
+            <address class="text-center">&copy; Oscar Palanco <a href="mailto:opalanco@gmail.com">opalanco@gmail.com</a></address>
+        </div>
+        </footer>
+
+</body>
+</html>
