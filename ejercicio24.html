@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 24</title>
+	<link rel="stylesheet" href="">
+</head>
+<style>
+	h1{
+		font-family: calibri;
+		text-align: center;
+		width: 100%;
+		border-bottom: 2px solid #FF9600;
+	}
+	.clear {
+		list-style: none;
+		width: 80%;
+		margin: 0 auto;
+	}
+	ul{
+		padding: 0;
+	}
+	ul>li{
+		background-color: #DF983D;
+		padding: 0 0 0 2em;
+		border-bottom: 1px solid #8F5E00;
+		font-family: monospace;
+	}
+	ul>li:hover{
+		background-color: #F7CB6E;
+	}
+	.container{
+		width: 20%;
+		border-radius: 15px;
+		margin: 0 auto;
+	}
+	button#btn {
+		height: 50px;
+		border-radius: 15px;
+		background-color: linear-gradient(#39D9FB, #0B8FEB);
+		border: 1px ;
+	}
+	.x{
+		width: 1em;
+		background-color: #F0FF00;
+		float: right;
+		cursor: pointer;
+		text-align: center;
+		margin-right: 1px;
+	}
+	@media(max-width: 720px){							/* MEDIA QUERY */
+		.lista{
+			width: 100%;
+		}
+		.clear{
+			width: 100%;
+		}
+		.container{
+			width: 100%;
+		}
+		button#btn {
+			width: 100%;
+		}
+	}													/* FIN DE LA MEDIA QUERY */
+</style>
+<script>
+  	document.addEventListener("DOMContentLoaded", main, false);	
+  	function main (){
+		document.getElementById('btn').onclick = agregarNodo;
+  	};
+	var agregarNodo = function (){
+		var li = document.createElement('li');
+		var content = document.createTextNode(prompt('Introduce el texto de la nueva línea', 'defaultillo'));
+		var content2 = document.createTextNode('X');
+		var ul = document.getElementsByClassName('clear');
+		var span = document.createElement('span');
+		span.className = 'x';
+		li.appendChild(content);
+		ul[0].appendChild(li);
+		span.appendChild(content2);
+		span.setAttribute('onclick', 'eliminar(this)');
+		li.appendChild(span);
+	};
+	var eliminar = function (ddd){
+		ddd.parentNode.remove();
+	};
+	var eliminar2 = function (aaa){
+		console.log(aaa);
+	};
+</script>
+<body>
+	<h1>Creación de elementos de lista desde javascript</h1>
+	<div class="lista">
+		<ul class="clear">
+			<li>Tiki <span class="x" onclick="eliminar(this)">X</span></li>
+			<li>taka <span class="x" onclick="eliminar(this)">X</span></li>
+			<li>teke <span class="x" onclick="eliminar(this)">X</span></li>
+		</ul>
+	</div>
+	<div class="container">
+		<button id="btn">Click para añadir elementos en la lista</button>
+	</div>
+</body>
+</html>

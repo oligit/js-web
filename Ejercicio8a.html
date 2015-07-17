@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Ejercicio 8a</title>
+    <script>
+        function main() {
+            var contador = 0;
+     
+            function cambioElemento() {
+                if (contador < 3) {
+                    this.innerHTML = "Que no..vuelvelo a intentar";
+                    contador++;
+                }
+                else {
+                    document.querySelector("ul").innerHTML = "Al fin";
+                }
+            }
+
+            document.querySelector("#a").onclick = cambioElemento.bind(document.querySelector("#al"));
+            document.querySelector("#b").onclick = cambioElemento.bind(document.querySelector("#bl"));
+            document.querySelector("#c").onclick = cambioElemento.bind(document.querySelector("#cl"));
+            document.querySelector("#d").onclick = cambioElemento.bind(document.querySelector("#dl"));
+                    
+        }
+        window.onload=main;
+    </script>
+</head>
+<body>
+    <ul id="ul">
+        <li id="al">
+            <a href="#" id="a">Pincha aquí</a>
+        </li>
+        <li id="bl">
+            <a href="#" id="b">O aquí</a>
+        </li>
+        <li id="cl">
+            <a href="#" id="c">O aquí</a>
+        </li>
+        <li id="dl">
+            <a href="#" id="d">Venga aquí</a>
+        </li>
+    </ul>
+</body>
+</html>
