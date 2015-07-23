@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 13 b</title>
+	<link rel="stylesheet" href="">
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<script>
+	jQuery(document).ready(function($) {
+		$('#btn').click(function(event) {
+			var s = prompt('Introduce el valor del nuevo elemento de la lista', '');
+			$('ul').append('<li>'+s+'</li>');
+		});
+	}); //fin de ready
+</script>
+<body>
+	<header>
+		<h1>Creación de elementos con jQuery</h1>
+	</header>
+	<article>
+		<ul>
+			<li>Uno</li>
+			<li>Dos</li>
+			<li>Tres</li>
+			<li>Cuatro</li>
+			<li>Cinco</li>
+		</ul>
+		<button id="btn">Añadir elemento</button>
+	</article>
+</body>
+</html>

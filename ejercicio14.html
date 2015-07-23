@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 14</title>
+	<link rel="stylesheet" href="">
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<script>
+	jQuery(document).ready(function($) {
+		var author = '&copy;&nbsp;Jorge Olivas Agudo';
+		$('footer>p').append(author);
+		$('#btn').click(function(event) {
+			$('#traca').toggle(400);
+		});
+	});
+</script>
+<style>
+	header {
+		width: 100%;
+	}
+	h1{
+		font-family: calibri;
+		width: 100%; 
+		text-align: center;
+		border-bottom: 3px solid #E09B4A;
+	}
+	article{
+		width: 90%;
+		margin: 0 auto;
+		padding: 1em;
+		background-color: #F1A92B;
+	}
+	p:first{
+		border: 1px solid #FF0000;
+	}
+</style>
+<body>
+	<header>
+		<h1>Ocultar / mostrar elementos mediante jQuery</h1>
+	</header>
+	<article>
+		<p id="parrafo">
+			Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. <span id="traca"> Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</span>
+		</p>
+		<button id="btn">
+			Ocultar / mostrar
+		</button>
+	</article>
+	<footer>
+		<p></p>
+	</footer>
+</body>
+</html>
