@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>
+		Ejercicio 20 a
+	</title>
+	<link rel="stylesheet" href="">
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script>
+		jQuery(document).ready(function($) {
+			$('p').hide();
+			$('h2').on('click', function(event) {
+				$(this).next().toggle(400);
+				//console.dir($(this).next()[0].className); //así se puede sacar la clase de un elemento para meter en un posible IF
+			});
+		});
+	</script>
+	<style>
+		.oculto{
+			visibility: hidden;
+		}
+		.visible{
+			visibility: visible;
+		}
+		h2{
+			background-color: #1321D8;
+		}
+		p {
+			background-color: #6EA9F2;
+		}
+	</style>
+</head>
+<body>
+	<h1>FAQs</h1>
+	<h2>¿Javascript viene de Java?</h2>
+	<p>No tienen nah que ver</p>
+	<h2>¿Trabajaba Tim Berners Lee en el zara de la calle alcalá?</h2>
+	<p>No, Tim Berners Lee trabajaba en el CERN</p>
+	<h2>¿Javascript puede volverme inmortal?</h2>
+	<p>Tan sólo los martes y jueves de 18:00 a 20:30</p>
+</body>
+</html>

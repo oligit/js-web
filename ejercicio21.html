@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 21</title>
+	<link rel="stylesheet" href="">
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script>
+		jQuery(document).ready(function($) {
+			$('nav>ul>li').hover(function() {
+				$(this).children('ul').css('display', 'block');
+				//console.log(this);
+			}, function() {
+				$(this).children('ul').css('display', 'none');
+			});
+			$('nav>ul>li>ul>li').hover(function() {
+				$(this).children('ul').css('display', 'block');
+			}, function() {
+				$(this).children('ul').css('display', 'none');
+			});
+		});
+	</script>
+</head>
+	<style>
+		/**/
+		nav>ul>li>ul {
+			display: none;
+			list-style: none;
+			padding: 0;
+		}
+		/*nav>ul>li:hover>ul{
+			display: block;
+			z-index: 1000;
+		}*/
+		nav>ul {
+			list-style: none;
+		}
+		nav>ul>li {
+			position: relative;
+			margin: 0;
+			float: left;
+			border: 1px solid #00AEFF;
+			background-color: rgba(255, 255, 255, 0.5);
+			/*display: block;*/
+		}
+		nav>ul>li>ul>li>ul { /*tercer nivel*/ 
+			display: none;
+			border: 1px solid #000;
+			list-style: none;
+			padding: 0;
+			top: 0;
+			left: 7em;
+		}
+		/*nav>ul>li>ul>li:hover>ul{
+			display: block;
+		}*/
+		nav>ul>li>ul>li>ul>li {
+			position: relative;
+			margin: 0;
+
+		}
+		/**/
+		h1{
+			margin-top: 50px;
+			font-family: calibri;
+		}
+		nav.block{
+			width: 100%;
+			overflow: auto; /*evitar efecto de los floats*/
+			background-color: #9A9A9A;
+			position: absolute;
+			margin-bottom: 2%;
+			top: 0;
+			left: 0;
+			z-index: 100;
+		}
+
+/*		nav.block>ul>li{
+			padding: 0 2%;
+			display: block;
+			float: left;
+			border: 1px solid #00AEFF;
+			margin: 0 2%;
+			background-color: rgba(255, 255, 255, 0.5);
+			
+		}*/
+
+		nav.block a {
+			font-family: calibri;
+			/*font-size: 20px;*/
+			text-decoration: none;
+			color: #000;
+		}
+	</style>
+<body>
+<nav class="block">
+	<ul>
+		<li><a href="#">Home</a></li>
+		<li>
+			<a href="#">Productos</a>
+			<ul>
+				<li><a href="#">Réplicas</a></li>
+				<li><a href="#">Ropa</a></li>
+				<li><a href="#">Consumibles</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">Galería</a>
+			<ul>
+				<li><a href="#">Fotos</a></li>
+				<li>
+					<a href="#">Vídeos</a>
+					<ul>
+						<li><a href="#">Nuevos</a></li>
+						<li><a href="#">Antiguos</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><a href="#">Acerca de</a></li>
+	</ul>
+</nav>
+</body>
+</html>

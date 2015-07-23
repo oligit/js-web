@@ -17,6 +17,7 @@
 </style>
 <script>
 	jQuery(document).ready(function($) {
+		console.dir($('#p2'));
 		$('html').on('dblclick', function(event) {
 			alert('Has hecho doble click.')
 		});
@@ -24,8 +25,9 @@
 			$('.oculto').removeClass('oculto').addClass('visible');
 		});
 		$('#p2').on('click', function(event) {
-			$('.visible').removeClass('visible').addClass('oculto');
-			$('#enlace').html('Párrafo borrado');
+			$('#p2').removeClass('visible').addClass('oculto');
+			$('#p1').html('Párrafo borrado');
+			$('#p2').html('');
 			$('#enlace').off('mouseover');
 		});
 	});
