@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Animaciones</title>
+	<link rel="stylesheet" href="">
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<script>
+	jQuery(document).ready(function($) {
+		$(document).mousemove(function(event) {
+			$('p.salidaR1').html('Navegador:  '+event.clientX+', '+event.clientY);
+			$('p.salidaR2').html('Página:  '+event.pageX+', '+event.pageY);
+		});
+		$(document).keypress(function(event) {
+			/* Act on the event */
+			$('p.salidaT1').html(event.keyCode);
+			console.log(event);
+		});
+	});
+</script>
+<style>
+	div.naranja {
+		width: 50%;
+		
+		height: 200px;
+		background-color: #E0913C;
+		float: left;
+	}
+	div.azul{
+		width: 50%;
+		
+		height: 200px;
+		background-color: #1BDDE4;
+		float: left;
+	}
+	div.main {
+		width: 50%;
+		margin: 0 auto;
+	}
+</style>
+<body>
+	<div class="main">
+		<div class="naranja">
+			<p>Ratón</p>
+			<p class="salidaR1"></p>
+			<p class="salidaR2"></p>
+		</div>
+		<div class="azul">
+			<p>Teclado</p>
+			<p class="salidaT1"></p>
+			<p class="salidaT2"></p>
+		</div>
+	</div>
+</body>
+</html>

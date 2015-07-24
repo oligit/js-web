@@ -8,9 +8,10 @@
 	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script>
 		jQuery(document).ready(function($) {
-			$('nav>ul>li').hover(function() {
+			$('nav>ul>li').hover(function(event) {
 				$(this).children('ul').css('display', 'block');
-				//console.log(this);
+				console.log(event);
+				// console.log(event.currentTarget);
 			}, function() {
 				$(this).children('ul').css('display', 'none');
 			});
@@ -19,6 +20,7 @@
 			}, function() {
 				$(this).children('ul').css('display', 'none');
 			});
+			/**/
 		});
 	</script>
 </head>
@@ -58,7 +60,6 @@
 		nav>ul>li>ul>li>ul>li {
 			position: relative;
 			margin: 0;
-
 		}
 		/**/
 		h1{
@@ -69,7 +70,8 @@
 			width: 100%;
 			overflow: auto; /*evitar efecto de los floats*/
 			background-color: #9A9A9A;
-			position: absolute;
+			/*position: absolute;*/
+			position: fixed;
 			margin-bottom: 2%;
 			top: 0;
 			left: 0;
