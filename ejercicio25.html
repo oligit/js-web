@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 25</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+		window.onload = main;
+		function main (){
+			var fecha1 = document.getElementById('fecha1').value;
+			document.addEventListener('click', comprueba_5);
+			console.log(fecha1);
+			function comprueba_5 (event){
+				
+			};
+		};
+	</script>
+	<style>
+/*		#main{
+			width: 90%;
+			border: 1px solid #9017D6;
+		}
+		form {
+			width: 100%;
+		}
+		label {
+			width: 29%;
+			float: left;
+		}
+		input{
+			width: 30%;
+			float: left;
+		}
+		button{
+			width: 30%;
+			float: left;
+		}*/
+	</style>
+</body>
+	<div id="main">
+		<form action="">
+			<label for="fecha1">Introduce una fecha</label><input type="date" name="fecha1" id="fecha1"><button id="btn1">Comprueba fecha</button>
+			<br>
+			<label for="fecha2">Introduce una fecha</label><input type="date" name="fecha2" id="fecha2"><button id="btn2">Comprueba fecha</button>
+		</form>
+	</div>
+</html>

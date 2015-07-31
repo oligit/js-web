@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 25 C</title>
+	<link rel="stylesheet" href="">
+</head>
+	<script>
+		window.onload = main;
+		function main (){
+			var form = document.getElementsByTagName('form')[0];
+			var emer = document.getElementById('emer');
+			var i1 = document.getElementById('pass1');
+			var i2 = document.getElementById('pass2');
+			const PASSREGEXP = /^[a-z]{2,8}$/;
+			var i = 0;
+			form.addEventListener('submit', compruebaPass);
+			i1.addEventListener('keypress', validaPass);
+			i2.addEventListener('keypress', validaPass);
+			i1.addEventListener('blur', reseteaI);
+
+			function compruebaPass(event){
+				event.preventDefault();
+				console.log('entra en compruebaPass()');
+				var _p1 = document.getElementById('pass1').value;
+				var _p2 = document.getElementById('pass2').value;
+				if (_p1 != _p2) {
+					i1.classList.remove('valido');
+					i2.classList.remove('valido');
+					i1.classList.add('invalido');
+					i2.classList.add('invalido');
+				}else{
+					i1.classList.remove('invalido');
+					i2.classList.remove('invalido');
+					i1.classList.add('valido');
+					i2.classList.add('valido');
+					emer.classList.add('emergente');
+					emer.innerHTML = 'Las contraseñas no coinciden';
+				}
+			};
+
+			function reseteaI (event){
+				i = 0;
+			};
+
+			function validaPass (event){
+				var _p1 = document.getElementById('pass1').value;
+				//console.log(_p1.match(PASSREGEXP));
+				if (PASSREGEXP.test(_p1)) {
+					i1.classList.remove('invalido');
+					i1.classList.add('valido');
+					emer.classList.remove('emergente');
+					emer.innerHTML = '';
+				}else{
+					i1.classList.remove('valido');
+					i1.classList.add('invalido');
+					emer.classList.add('emergente');
+					emer.innerHTML = 'Introduce un formato válido para la contraseña';
+				}
+			};
+		};
+	</script>
+	<style>
+/*		form{
+			width: 100%;
+			
+		}
+		label {
+			float: left;
+			width: 49%;
+		}
+		input {
+			float: left;
+			width: 50%;
+		}
+		input[type="submit"]{
+			width: 100%;
+		}
+		.main {
+			width: 30%;
+			margin: 0 auto;
+		}*/
+		.valido{
+			border: 1px solid #19D545;
+		}
+		.invalido{
+			border: 1px solid #D74545;
+		}
+		p.emergente{
+			background-color: #F2E234;
+			border: 1px solid #D4D4D4;
+			border-radius: 3px;
+			width: 150px;
+			position: absolute;
+			top: -9px;
+			left: 40px;
+			padding: 4px;
+		}
+		.emergente:after{
+			content: '';
+			position: absolute;
+			border-style: solid;
+			border-width: 0 7px 7px;
+			border-color: #fff transparent;
+			display: block;
+			width: 0;
+			z-index: 1;
+			top: -7px;
+			left: 15px;
+		}
+		.emergente:before{
+			content: '';
+			position: absolute;
+			border-style: solid;
+			border-width: 0 7px 7px;
+			border-color: #D4D4D4 transparent;
+			display: block;
+			width: 0;
+			z-index: 0;
+			top: -8px;
+			left: 15px;
+		}
+	</style>
+<body>
+	<div class="main">
+		<form action="">
+			<label for="nombre">Introduzca su nombre de usuario</label><input type="text" id="nombre" name="nombre"><br>
+			<label for="pass1">Introduce una contraseña</label><input type="password" id="pass1" name="pass1"><br>
+			<label for="pass2">Vuelve a introducir la contraseña</label><input type="password" id="pass2" name="pass2"><br>
+			<input type="submit" value="Enviar">
+		</form>
+		<p id="emer"></p>
+	</div>
+	
+</body>
+</html>

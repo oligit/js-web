@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Menú pegado al hacer scroll</title>
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<link rel="stylesheet" href="jquery-ui-1.9.2.custom.min.css">
+	<script src="jquery-ui-1.9.2.custom.min.js"></script>
+</head>
+<style>
+	h1{
+		font-family: calibri;
+		text-align: center;
+	}
+	.posicion{
+		position: fixed;
+		top: 0;
+		width: 100%;
+	}
+	ul#pri{
+		list-style: none;
+		height: 100%;
+		/*width: auto;*/
+		margin: 0;
+	}
+	.pullRight{
+		float: right;
+	}
+	li{
+		float:left;
+		height: 100%;
+		width: 10%;
+		text-align: center;
+		padding-top: 1em;
+		cursor: pointer;
+	}
+	nav>ul>li:hover{
+		background-color: #7DBCF6;
+	}
+	nav{
+		width: 90%;
+		margin: 0 auto;
+		/*overflow: auto;*/
+		background-color: #61A3F4;
+		height: 50px;
+	}
+	img{
+		float: left;
+		width: 100%;
+	}
+	#img{
+		margin-right: 10%;
+		width: 200px;
+		height: 100px;
+	}
+</style>
+<script>
+	window.onload = main;
+	function main (){
+		var barra = $('#barra');
+		$('.pullRight').hide();
+		$('li').draggable();
+		console.log(barra[0].offsetTop);
+		$(window).on('scroll', function(event) {
+			if (barra[0].offsetTop<window.scrollY) {
+				// console.log('entra en if');
+				barra.addClass('posicion');
+				$('.pullRight').show(400);
+			}else{
+				barra.removeClass('posicion');
+				$('.pullRight').hide(400);
+			}
+		});
+	};
+</script>
+<body>
+	<header>
+		<h1>Olisoft</h1>
+		<nav id="barra">
+			<ul id="pri">
+				<li>Home</li>
+				<li>Galería</li>
+				<li>Tienda</li>
+				<li>About</li>
+				<li class="pullRight">Olisoft S.L.</li>
+			</ul>
+		</nav>
+	</header>
+	<article>
+		<div id="img">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Operation_Desert_Storm_22.jpg" alt="">
+		</div>
+		<div id="contenido">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem tenetur dolor amet impedit, fugit explicabo obcaecati quos, optio architecto consequuntur non in magni similique minus nemo. Provident pariatur totam quaerat!
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos quidem itaque, ea dicta. Nisi impedit doloribus quisquam consequatur assumenda in modi, hic eveniet natus eos. Veritatis voluptatem, voluptas autem explicabo!
+			</p>
+			<p>
+				<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid fugiat, incidunt blanditiis quaerat iste, necessitatibus libero illo accusamus nihil itaque tempore, maxime, vel at modi dolor doloremque distinctio asperiores!</span><span>Quis accusantium repellat iusto voluptas repellendus non, aperiam eum sapiente ipsum nulla nam ad dolore quam est. Cupiditate sunt expedita ipsam. Ullam et aperiam, ratione maxime corporis voluptas nisi reprehenderit.</span>
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem blanditiis est earum minima consectetur, in veniam perspiciatis vel provident quasi eius reprehenderit veritatis commodi nisi ex amet, deserunt, nobis asperiores.
+			</p>
+			<p>
+				<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus atque, aliquid dolor recusandae sed voluptatem nihil voluptates at vel rerum sit deserunt quam saepe. Expedita qui vero adipisci, ex commodi.</span>
+				<span>Incidunt pariatur magni mollitia, deserunt expedita quidem ratione nulla accusamus laborum quis molestias, temporibus vel! In a asperiores sit eos maiores labore, quisquam voluptatum illo, molestiae commodi. Voluptatem, rerum ipsam.</span>
+				<span>Autem ipsam cumque, quod excepturi ex quo ab adipisci commodi dicta odio velit culpa praesentium nobis, at, atque similique expedita sunt fuga rem mollitia quibusdam magnam. Quisquam ad, facilis voluptatibus.</span>
+				<span>Magnam id eveniet necessitatibus dolore expedita quisquam, qui natus at quae minima sit odio porro cum a quas dolorum atque ratione. Quam quis consequuntur, ex rerum nulla cumque vero iste!</span>
+				<span>Quidem assumenda maiores aperiam deserunt ad beatae perspiciatis eaque enim nulla? Ipsum minima doloremque nam hic, repudiandae provident aut, vitae vel nesciunt id, beatae maiores consequatur eos perspiciatis, nihil commodi.</span>
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime rerum commodi nemo neque similique praesentium asperiores vero odio, iste quo animi? Non libero ducimus at amet laborum, exercitationem nesciunt debitis!
+			</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, doloremque saepe hic ullam in voluptas, aut magni! Voluptatibus ullam dolor eveniet accusantium eaque harum placeat quod dignissimos nam, quaerat aspernatur.</p>
+			<p>Ex consequatur voluptas voluptatibus porro impedit iste est iusto quod nemo expedita consequuntur nesciunt rerum quia labore alias adipisci iure optio non culpa quidem ab distinctio in quis vero, similique?</p>
+			<p>Officiis possimus temporibus illum cumque eveniet placeat fugit eaque nisi omnis blanditiis vero a sapiente asperiores nesciunt minus mollitia sint magnam saepe quo iste, excepturi explicabo, tenetur. Dolorem, at vitae!</p>
+			<p>Eius voluptates a blanditiis rem laborum itaque optio obcaecati, aspernatur qui beatae culpa, facilis ex doloremque, possimus minima quo. Asperiores et autem ut architecto minus quas quam expedita, quasi omnis.</p>
+			<p>Sit illo quae aliquam, beatae ipsam error reprehenderit minima quia nam. Ab exercitationem autem incidunt asperiores amet sed, sapiente doloremque consectetur enim et reiciendis quisquam impedit, magnam laudantium, recusandae inventore.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore officia quod sunt alias aliquam! Accusamus expedita repellat, necessitatibus ut nam, eveniet, nulla a culpa quasi nihil quaerat repudiandae corporis dicta.</p>
+			<p>Inventore facilis suscipit illo, sunt eveniet eaque eos assumenda quaerat, ducimus, labore tempore veritatis. Aliquid iste eligendi laboriosam fuga et animi delectus, illo explicabo quod possimus maxime. Molestias, fugiat? Iusto?</p>
+			<p>Ipsam, optio dignissimos magnam iure animi porro doloribus, libero quasi quam nihil quia atque debitis quae quo voluptas quisquam cum praesentium tenetur ea, sapiente modi aspernatur, maxime eos dolor illum.</p>
+			<p>Quas consequatur, nesciunt ut ipsam, amet optio id quibusdam tempora quidem earum, fuga autem ad animi? Voluptates molestiae consectetur modi a voluptas, recusandae saepe quae qui quasi quam totam maiores.</p>
+			<p>Exercitationem quaerat laboriosam praesentium placeat mollitia assumenda, quisquam repudiandae. Velit animi ut unde maxime tenetur, repellat labore ipsum. Non possimus odit veniam dolore. Vel, iusto saepe commodi eum, sit nemo.</p>
+			<p>Iusto obcaecati quibusdam tempora illo ullam beatae modi dolorem porro vitae ea atque explicabo, dignissimos facere earum cumque, nulla, magnam quis placeat perspiciatis dicta ipsam hic repudiandae cum? Molestias, repellendus!</p>
+			<p>Numquam nam, dolores, commodi repellat praesentium magni impedit, rerum suscipit quo maiores similique exercitationem nisi vero quaerat odio animi iusto accusantium at itaque sint pariatur beatae cumque! Inventore, fugit, commodi.</p>
+			<p>Praesentium recusandae rem et officia explicabo soluta, laboriosam similique quidem totam eaque, libero facilis, aliquid quasi quo eveniet molestias velit? Laboriosam eius atque voluptate maxime architecto, cum aperiam exercitationem molestiae!</p>
+			<p>Officiis ducimus odit nobis, ab velit molestias sit eaque dicta quidem impedit praesentium est beatae accusamus harum perspiciatis repellendus aspernatur labore, ipsam consectetur soluta optio, libero architecto laboriosam in! Reprehenderit.</p>
+			<p>Deleniti hic a, facere tenetur necessitatibus, voluptate officia quas saepe, quasi excepturi velit nisi natus totam suscipit ad eos illum delectus debitis, blanditiis! Veniam autem repellat eum, error suscipit? Culpa.</p>
+			<p>Nobis accusamus alias ipsa, cumque odit nostrum eveniet incidunt quidem quos iure labore, dolore nesciunt repellendus praesentium, numquam. Fuga cupiditate vitae exercitationem eos, hic nesciunt, aut eaque dolore nemo aspernatur.</p>
+			<p>Id temporibus debitis at quod alias dolorum, dolore sint harum libero inventore quisquam aliquam hic, repudiandae possimus repellat quia. Beatae dolor quidem qui, quaerat assumenda incidunt sed dolore, et aperiam!</p>
+		</div>
+	</article>
+	<footer>
+		
+	</footer>
+</body>
+</html>

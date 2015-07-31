@@ -10,17 +10,25 @@
 	window.onload = main;
 		function main (){
 			console.log('entra en main');
-			document.getElementById('enviar').addEventListener('click', enviar, false);
-			var enviar = function (event){
+			document.getElementById('enviar').addEventListener('click', enviar);
+			var datos = new Array();
+			function enviar (event){
 				event.preventDefault();
-				var nombre = document.getElementsByTagName('nombre').value;
-				var apellido = document.getElementsByName('apellidos').value;
-				var ciudad = document.getElementsByTagName('ciudad').value;
-				var provincia = document.getElementsByTagName('provincia').value;
-				var comentarios = document.getElementsByTagName('comentarios').value;
-				console.log(nombre);
+				var nombre = document.getElementById('nombre').value;
+				var apellido = document.getElementById('apellidos').value;
+				var ciudad = document.getElementById('ciudad').value;
+				var provincia = document.getElementById('provincia').value;
+				var comentarios = document.getElementById('comentarios').value;
+				datos = {nombre, apellido, ciudad, provincia, comentarios};
+				pintar(datos);
 			};
-		}
+			function pintar (arr){
+					document.getElementById('main').innerHTML = '<fieldset><legend>Datos: </legend><div id="field"></div></fieldset>';
+				for(i in arr){
+					document.getElementById('field').innerHTML += '<p>'+arr[i]+'</p>';
+				}
+			};
+		};
 </script>
 <style>
 	form{
@@ -49,19 +57,22 @@
 	}
 </style>
 <body>
-	<form action="#" id="formu">
-		<label for="">Nombre</label>
-		<input type="text" name="nombre" autofocus>
-		<label for="">Apellido</label>
-		<input type="text" name="apellido">
-		<label for="">Ciudad</label>
-		<input type="text" name="ciudad">
-		<label for="">Provincia</label>
-		<input type="text" name="provincia">
-		<label for="">Comentarios</label>
-		<textarea name="" id="" cols="30" rows="10" name="comentarios"></textarea>
-		<input type="submit" id="enviar" value="submit">
-		<input type="reset">
-	</form>
+	<div id="main">
+		<form action="#" id="formu">
+			<label for="">Nombre</label>
+			<input type="text" name="nombre" id="nombre" autofocus>
+			<label for="">Apellido</label>
+			<input type="text" name="apellido" id="apellidos">
+			<label for="">Ciudad</label>
+			<input type="text" name="ciudad" id="ciudad">
+			<label for="">Provincia</label>
+			<input type="text" name="provincia" id="provincia">
+			<label for="">Comentarios</label>
+			<textarea name="" cols="30" rows="10" name="comentarios" id="comentarios"></textarea>
+			<input type="submit" id="enviar" value="submit">
+			<input type="reset">
+		</form>
+	</div>
+	<!-- <fieldset><legend>Datos: </legend></fieldset> -->
 </body>
 </html>

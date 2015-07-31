@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 25 D</title>
+	<link rel="stylesheet" href="">
+</head>
+<script src="modernizr.custom.13618.js"></script>
+<script>
+	const REGEXPASS = /\b([a-z]{2,8})\b/
+	var bD = {
+        init: function () {
+            this.browser = this.searchString(this.dataBrowser) || "Other";
+            this.version = this.searchVersion(navigator.userAgent) || this.searchVersion(navigator.appVersion) || "Unknown";
+        },
+        searchString: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                var dataString = data[i].string;
+                this.versionSearchString = data[i].subString;
+
+                if (dataString.indexOf(data[i].subString) !== -1) {
+                    return data[i].identity;
+                }
+            }
+        },
+        searchVersion: function (dataString) {
+            var index = dataString.indexOf(this.versionSearchString);
+            if (index === -1) {
+                return;
+            }
+
+            var rv = dataString.indexOf("rv:");
+            if (this.versionSearchString === "Trident" && rv !== -1) {
+                return parseFloat(dataString.substring(rv + 3));
+            } else {
+                return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
+            }
+        },
+
+        dataBrowser: [
+            {string: navigator.userAgent, subString: "Chrome", identity: "Chrome"},
+            {string: navigator.userAgent, subString: "MSIE", identity: "Explorer"},
+            {string: navigator.userAgent, subString: "Trident", identity: "Explorer"},
+            {string: navigator.userAgent, subString: "Firefox", identity: "Firefox"},
+            {string: navigator.userAgent, subString: "Safari", identity: "Safari"},
+            {string: navigator.userAgent, subString: "Opera", identity: "Opera"}
+        ]
+
+    };
+    function compatible (event){
+		event.preventDefault();
+		console.log('Entra en compatible()');
+		var nombre = document.getElementById('nombre');
+		var apellido = document.getElementById('apellido');
+		var email = document.getElementById('correo');
+		var pass1 = document.getElementById('pass1');
+		var pass2 = document.getElementById('pass2');
+		var textarea = document.getElementsByTagName('textarea')[0];
+		var terminos = document.getElementById('terminos');
+    };
+    function validaPass (event){
+		var pass1 = document.getElementById('pass1');
+		var p = document.getElementById('parrafo');
+		console.log(pass1.value.search(REGEXPASS));
+		if (pass1.value.match(REGEXPASS)) {
+			pass1.classList.remove('invalido');
+			pass2.classList.remove('invalido');
+			pass1.classList.add('valido');
+			pass2.classList.add('valido');
+			p.innerHTML = '';
+		}else{
+			pass1.classList.remove('valido');
+			pass2.classList.remove('valido');
+			pass1.classList.add('invalido');
+			pass2.classList.add('invalido');
+			p.innerHTML = 'El formato de la contraseña no es correcto.';
+		}
+    };
+    function valida5 (event){
+    	event.preventDefault();
+		var pass1 = document.getElementById('pass1');
+		var pass2 = document.getElementById('pass2');
+		var p = document.getElementById('parrafo');
+		p.innerHTML = '';
+		if (pass1.value === pass2.value) {
+			pass1.classList.remove('invalido');
+			pass2.classList.remove('invalido');
+			pass1.classList.add('valido');
+			pass2.classList.add('valido');
+		}else{
+			pass1.classList.remove('valido');
+			pass2.classList.remove('valido');
+			pass1.classList.add('invalido');
+			pass2.classList.add('invalido');
+			p.innerHTML += 'Las contraseñas no coinciden, cateto';
+		}
+    };
+	window.onload = main;
+	function main(event){
+	    bD.init();
+	    //console.log("You are using " + BrowserDetect.browser + " with version " + BrowserDetect.version);
+	    //console.log(navigator.userAgent);
+	    console.log(bD.browser);
+	    console.log(bD.version);
+	    console.log(Modernizr.required);
+	    if ((bD.browser == 'Explorer' && bD.version < 8)||(bD.browser == 'Firefox' && bD.version < 4)) { //SI el navegador es una patata...
+	    
+	    }else{
+	    	document.getElementById('formu').addEventListener('submit', valida5);
+    		document.getElementById('pass1').addEventListener('keypress', validaPass);
+	    }
+	};
+</script>
+<style>
+	.valido{
+		background-color: #0f0;
+	}
+	.invalido{
+		background-color: #f00;
+	}
+	.container {
+		width: 30%;
+		margin: 0 auto;
+	}
+	#parrafo {
+		font-family: calibri;
+		color: #f00;
+	}
+	label{ 
+		width: 50%;
+		float: left;
+	}
+	label[for="terminos"]{
+		width: 80%;
+		float: left;
+	}
+	input{
+		width: 50%;
+		box-sizing: border-box;
+		float: left;
+	}
+	input[type="submit"]{
+		width: 100%;
+	}
+	textarea{
+		width: 100%;
+		box-sizing: border-box;
+	}
+	input[type="checkbox"]{
+		width: auto;
+		float: left;
+	}
+</style>
+<body>
+	<div class="container">
+		<form action="" id="formu">
+			<label for="nombre">Nombre: </label>
+			<input type="text" name="nombre" id="nombre" required>
+			<!-- <span id="spanN"></span> --> <br>
+			<label for="apellido">Apellido:</label>
+			<input type="text" id="apellido" name="apellido" required>
+			<!-- <span id="apellidoS"></span> --> <br>
+			<label for="correo">Correo:</label>
+			<input type="email" id="correo" name="correo" required>
+			<!-- <span id="correoS"></span> --> <br>
+			<label for="pass1">Escribe una contraseña</label>
+			<input type="password" id="pass1" name="pass1" required>
+			<!-- <span></span> --> <br>
+			<label for="pass2">Repite la contraseña</label>
+			<input type="password" id="pass2" name="pass2">
+			<!-- <span></span> --> <br>
+			<textarea name="textarea" id="" cols="30" rows="10"></textarea> <br>
+			<input type="checkbox" name="terminos" id="terminos"><label for="terminos">Acepto los estúpidos y sensuales términos</label>
+			<input type="submit" value="Enviar">
+		</form>
+		<br>
+		<p id="parrafo"></p>
+	</div>
+</body>
+</html>

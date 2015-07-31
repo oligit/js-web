@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 30</title>
+	<link rel="stylesheet" href="">
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<script>
+	window.onload = main;
+	function main (){
+		var imagenes = [];
+		for(var i = 0; i<4; i++){
+			imagenes[i] = new Image();
+		}
+		imagenes[0].src = 'imagenes/rave1.jpg';
+		imagenes[1].src = 'imagenes/rave2.jpg';
+		imagenes[2].src = 'imagenes/rave3.jpg';
+		imagenes[3].src = 'imagenes/rave4.jpg';
+		console.dir(imagenes);
+		pintaImagenes(imagenes);
+		function pintaImagenes (arr){
+			var i = 0;
+			for(a in arr){
+				$('img')[i].attr('src', a.src);
+				console.log(a.src);
+				i++;
+			}
+		};
+	};
+</script>
+<body>
+	<div id="slider">
+		<ul id="listado">
+			<li><img src="" alt=""></li>
+			<li><img src="" alt=""></li>
+			<li><img src="" alt=""></li>
+			<li><img src="" alt=""></li>
+			<li><img src="" alt=""></li>
+		</ul>
+		<span></span>
+		<span></span>
+	</div>
+</body>
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</html>
